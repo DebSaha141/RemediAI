@@ -1,0 +1,27 @@
+<app-header/>
+<div class="chat-container">
+  <div class="messages" #chatContainer>
+    <div 
+      *ngFor="let msg of messages" 
+      class="message" 
+      [ngClass]="msg.user === 'You' ? 'user' : 'ai'"
+    >
+      <strong>{{ msg.user }}:</strong> 
+      <div [innerHTML]="getSanitizedHtml(msg.text)"></div>
+      <!-- <div [innerHTML]="getSanitizedHtml(msg.text)"></div> -->
+      <div class="timestamp">{{ msg.timestamp | date:'shortTime' }}</div>
+    </div>
+
+    <div *ngIf="isAITyping" class="typing">AI is typing...</div>
+  </div>
+
+  <div class="input-section">
+    <input 
+      [(ngModel)]="userInput" 
+      placeholder="Describe symptoms..." 
+      (keyup.enter)="sendMessage()" 
+    />
+    <button (click)="sendMessage()">Send</button>
+    <!-- <button (click)="logout()">Logout</button> -->
+  </div>
+</div>

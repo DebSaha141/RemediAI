@@ -1,0 +1,127 @@
+@use "sass:color";
+
+$primary-color: #4cc9f0;
+$accent-color: #4361ee;
+$background-color: #0f172a;
+$text-color: #f1f5f9;
+$input-bg: #1e293b;
+$input-border: #334155;
+$user-message-color: #133d82;
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 65px);
+  background-color: $background-color;
+  color: $text-color;
+  font-family: "Segoe UI", sans-serif;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    scroll-behavior: smooth;
+    padding: 1rem;
+
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .message {
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+    position: relative;
+    font-size: 0.95rem;
+
+    &.user {
+      align-self: flex-end;
+      background-color: $user-message-color;
+      color: white;
+    }
+
+    &.ai {
+      align-self: flex-start;
+      background-color: $input-bg;
+      border: 1px solid $input-border;
+      text-decoration: none;
+      padding-left: 2.25rem;
+    }
+
+    .timestamp {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      margin-top: 4px;
+      text-align: right;
+    }
+  }
+
+  .typing {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: color.adjust($primary-color, $lightness: 15%);
+    margin-left: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .input-section {
+    display: flex;
+    padding: 0.75rem;
+    background-color: $input-bg;
+    border-top: 1px solid $input-border;
+    border-radius: 12px 12px 0 0;
+
+    input {
+      flex: 1;
+      background-color: $input-bg;
+      border: 1px solid $input-border;
+      color: $text-color;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-right: 0.75rem;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+      }
+    }
+
+    button {
+      padding: 0.75rem 1.2rem;
+      background-color: $accent-color;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+
+      &:hover {
+        background-color: color.adjust($accent-color, $lightness: 5%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      input {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

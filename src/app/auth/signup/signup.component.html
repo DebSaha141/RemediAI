@@ -1,0 +1,38 @@
+
+<div *ngIf="isLoading" class="auth-container loading">
+  <p>Checking authentication...</p>
+</div>
+
+
+<div *ngIf="!isLoading" class="auth-container">
+  <h2>🩺RemediAI</h2>
+  <h3>Your AI-powered medical companion.</h3>
+  <form (ngSubmit)="onSubmit()">
+    <input 
+      [(ngModel)]="email" 
+      name="email"
+      type="email" 
+      placeholder="Enter your email" 
+      required
+    />
+
+    <input 
+      [(ngModel)]="password" 
+      name="password"
+      type="password" 
+      placeholder="Enter your password" 
+      required
+    />
+
+    <button type="submit">
+      {{ isLoginMode ? 'Log In' : 'Sign Up' }}
+    </button>
+  </form>
+
+  <p class="toggle-text">
+    {{ isLoginMode ? "Don't have an account?" : "Already have an account?" }}
+    <span (click)="toggleMode()">
+      {{ isLoginMode ? 'Sign up' : 'Log in' }}
+    </span>
+  </p>
+</div>

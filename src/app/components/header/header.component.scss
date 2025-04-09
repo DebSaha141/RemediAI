@@ -1,0 +1,43 @@
+@use "sass:color";
+$background-color: #0f172a;
+$accent-color: #4361ee;
+$text-color: #f1f5f9;
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $background-color;
+  color: $text-color;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid color.adjust($background-color,$lightness : 10%);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    a{
+        text-decoration: none;
+        color:$accent-color
+    }
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+
+    a {
+      text-decoration: none;
+      color: $text-color;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}

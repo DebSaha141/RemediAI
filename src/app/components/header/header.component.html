@@ -1,0 +1,14 @@
+<header class="app-header">
+    <div class="logo"><a routerLink="/">🩺 RemidiAI</a></div>
+    <nav>
+      <a routerLink="/">Home</a>
+      <!-- <a routerLink="/chat">Chat</a> -->
+      <ng-container *ngIf="auth.isLoggedIn(); else guest">
+        <a (click)="logout()">Logout</a>
+      </ng-container>
+      <ng-template #guest>
+        <a routerLink="/login">Login</a>
+      </ng-template>
+    </nav>
+  </header>
+  
