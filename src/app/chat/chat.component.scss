@@ -19,6 +19,7 @@ $user-message-color: #133d82;
   padding-left: 1rem;
   padding-right: 1rem;
 
+
   .messages {
     flex: 1;
     overflow-y: auto;
@@ -41,10 +42,14 @@ $user-message-color: #133d82;
   .message {
     padding: 0.75rem 1rem;
     border-radius: 10px;
-    max-width: 70%;
+    max-width: 80%;
     word-wrap: break-word;
     position: relative;
     font-size: 0.95rem;
+
+    @media (max-width: 768px) {
+      max-width: 90%;
+    }
 
     &.user {
       align-self: flex-end;
@@ -58,6 +63,7 @@ $user-message-color: #133d82;
       border: 1px solid $input-border;
       text-decoration: none;
       padding-left: 2.25rem;
+
     }
 
     .timestamp {
